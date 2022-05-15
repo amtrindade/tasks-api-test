@@ -1,7 +1,8 @@
-package br.ce.wcaquino.tasks.apitest;
+package br.trinda.tasks.apitest;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.restassured.RestAssured;
@@ -27,7 +28,7 @@ public class APITest {
 	@Test
 	public void deveAdicionarTarefaComSucesso() {
 		RestAssured.given()
-			.body("{ \"task\": \"Teste via API\", \"dueDate\": \"2020-12-30\" }")
+			.body("{ \"task\": \"Teste via API\", \"dueDate\": \"2022-05-14\" }")
 			.contentType(ContentType.JSON)
 		.when()
 			.post("/todo")
@@ -48,12 +49,13 @@ public class APITest {
 			.body("message", CoreMatchers.is("Due date must not be in past"))
 		;
 	}
-	
+
+	@Ignore
 	@Test
 	public void deveRemoverTarefaComSucesso() {
 		//inserir
 		Integer id = RestAssured.given()
-			.body("{ \"task\": \"Tarefa para remoção\", \"dueDate\": \"2020-12-30\" }")
+			.body("{ \"task\": \"Tarefa para remoção\", \"dueDate\": \"2022-05-14\" }")
 			.contentType(ContentType.JSON)
 		.when()
 			.post("/todo")
