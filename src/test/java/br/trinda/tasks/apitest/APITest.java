@@ -28,7 +28,7 @@ public class APITest {
 	@Test
 	public void deveAdicionarTarefaComSucesso() {
 		RestAssured.given()
-			.body("{ \"task\": \"Teste via API\", \"dueDate\": \"2022-05-14\" }")
+			.body("{ \"task\": \"Teste via API\", \"dueDate\": \"2022-05-16\" }")
 			.contentType(ContentType.JSON)
 		.when()
 			.post("/todo")
@@ -55,7 +55,7 @@ public class APITest {
 	public void deveRemoverTarefaComSucesso() {
 		//inserir
 		Integer id = RestAssured.given()
-			.body("{ \"task\": \"Tarefa para remoção\", \"dueDate\": \"2022-05-14\" }")
+			.body("{ \"task\": \"Tarefa para remoção\", \"dueDate\": \"2022-05-16\" }")
 			.contentType(ContentType.JSON)
 		.when()
 			.post("/todo")
@@ -64,9 +64,9 @@ public class APITest {
 			.statusCode(201)
 			.extract().path("id")
 		;
-		
+
 		System.out.println(id);
-		
+
 		//remover
 		RestAssured.given()
 		.when()
